@@ -63,5 +63,16 @@ def delete_comida(id_comida):
         db.session.commit()
     return redirect(url_for('index'))
 
+#Actualizar Comida
+@app.route('/comidas/update/<string:id_comida>', methods=['GET','POST'])
+def update_comida(id_comida):
+    comida = Comidas.query.get(id_comida)
+    if request.method == 'POST':
+        comida.nombre = request.form['nombre']
+        comida.precio = request.form['precio']
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('update_comida.html', comida=comida)
+
 if __name__ == '__main__':
     app.run(debug=True)

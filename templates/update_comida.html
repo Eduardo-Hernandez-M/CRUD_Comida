@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %} Actualizar Estudiante {% endblock %}
+
+{% block content %}
+<div class="columns is-centered">
+    <div class="column is-half">
+        <div class="card">
+            <div class="card-content">
+                <h3 class="title is-4">Actualizar comida</h3>
+                
+                <form action="{{ url_for('update_comida', id_comida=comida.id_comida) }}" method="POST">
+                    
+                    <div class="field">
+                        <label class="label" for="nombre">Nombre:</label>
+                        <div class="control">
+                            <input type="text" class="input" id="nombre" name="nombre" value="{{ comida.nombre }}" required>
+                        </div>
+                    </div>
+                    
+                    <div class="field">
+                        <label class="label" for="precio">Precio:</label>
+                        <div class="control">
+                            <input type="text" class="input" id="precio" name="precio" value="{{ comida.precio }}" required>
+                        </div>
+                    </div>
+                    
+                    <div class="field is-grouped mt-5">
+                        <div class="control">
+                            <button type="submit" class="button is-link">Actualizar</button>
+                        </div>
+                        <div class="control">
+                            <a href="{{ url_for('index') }}" class="button is-danger">Cancelar</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
