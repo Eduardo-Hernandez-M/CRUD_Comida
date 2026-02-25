@@ -24,7 +24,8 @@
                 <td>{{ comida.precio }}</td>
                 <td>
                     <div class="buttons">
-                        <a class="button is-danger is-small">Eliminar</a>
+                        <a href="{{ url_for('delete_comida', id_comida=comida.id_comida) }}" 
+                           class="button is-danger is-small">Eliminar</a>
                         <a class="button is-warning is-small">Actualizar</a>
                     </div>
                 </td>

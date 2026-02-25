@@ -54,5 +54,14 @@ def create_comida():
     #Aqui sigue si es GET
     return render_template('create_comida.html')
 
+#Eliminar Comida
+@app.route('/comidas/delete/<string:id_comida>')
+def delete_comida(id_comida):
+    comidas = Comidas.query.get(id_comida)
+    if comidas:
+        db.session.delete(comidas)
+        db.session.commit()
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     app.run(debug=True)
