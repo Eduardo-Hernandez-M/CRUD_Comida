@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="block">
-    <a href="/comidas/nueva" class="button is-success">Agregar Comida</a>
+    <a href="/comidas/new" class="button is-success">Agregar Comida</a>
 </div>
 
 <div class="table-container">
@@ -29,10 +29,7 @@
                     </div>
                 </td>
             </tr>
-            {% else %}
-            <tr>
-                <td colspan="4" class="has-text-centered">No hay comidas registradas.</td>
-            </tr>
+
             {% endfor %}
         </tbody>
     </table>

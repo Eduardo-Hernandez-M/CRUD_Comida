@@ -28,14 +28,31 @@ class Comidas(db.Model):
             'precio': self.precio,
         }
 
-
 #Ruta raiz
 @app.route('/comidas')
 def index():
     #Trae todos las comidas
     comidas = Comidas.query.all()
-    #return estudiantes
+    #return comidas
     return render_template('index.html', comidas=comidas)
+
+@app.route('/comidas/new', methods=['GET','POST'])
+def create_comida():
+    if request.method == 'POST':
+        #Agregar Comida
+        id_comida = request.form['id_comida']
+        nombre = request.form['nombre']
+        precio = request.form['precio']
+
+        nvo_comida = Comidas(id_comida=id_comida, nombre=nombre, precio=precio)
+
+        db.session.add(nvo_comida)
+        db.session.commit()
+
+        return redirect(url_for('index'))
+    
+    #Aqui sigue si es GET
+    return render_template('create_comida.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
